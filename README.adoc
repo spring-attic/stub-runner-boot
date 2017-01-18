@@ -1,0 +1,38 @@
+# Stub Runner Boot
+
+This is an example of a fully setup stub runner boot application that
+needs to have the following properties setup
+
+```yml
+stubrunner:
+  # artifact ids containing stubs to be downloaded
+  ids: com.example.groupid:artifactid:classifier:version:port
+  # url of where the stubs reside
+  repositoryRoot: http://localhost:8081/artifactory/libs-release-local
+```
+
+Then when you start the application the stubs will be downloaded and
+http server stubs will be started for you.
+
+## FAQ
+
+### Startup exceptions
+
+Q: I'm running the application and get. Why?
+
+```bash
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.cloud.contract.stubrunner.server.HttpStubsController': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'batchStubRunner' defined in org.springframework.cloud.contract.stubrunner.spring.StubRunnerConfiguration: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.cloud.contract.stubrunner.BatchStubRunner]: Factory method 'batchStubRunner' threw exception; nested exception is java.lang.IllegalStateException: Remote repositories for stubs are not specified and work offline flag wasn't passed
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:749) ~[spring-beans-4.3.5.RELEASE.jar!/:4.3.5.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:189) ~[spring-beans-4.3.5.RELEASE.jar!/:4.3.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1154) ~[spring-beans-4.3.5.RELEASE.jar!/:4.3.5.RELEASE]
+```
+
+A: You haven't set up the `stubrunner.repositoryRoot`. You need to pass it to download
+the stubs from a repo. If you want to use the stubs installed locally just turn
+`stubRunner.workOffline` flag to `true`.
+
+
+## Links
+
+- http://cloud.spring.io/spring-cloud-static/Camden.SR4/#_stub_runner_boot_application[Stub Runner Boot documentation]
+- http://cloud.spring.io/spring-cloud-pipelines/spring-cloud-pipelines.html#_tests[Introduction to an opinionated CD pipeline]

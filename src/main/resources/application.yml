@@ -1,0 +1,4 @@
+server.port: ${PORT:8083}
+spring:
+  application:
+    name: stubrunner

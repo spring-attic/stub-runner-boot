@@ -1,0 +1,6 @@
+---
+applications:
+- name: stubrunner
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
+    DEBUG: "true"
