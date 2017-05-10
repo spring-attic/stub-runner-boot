@@ -5,17 +5,10 @@ machine:
     _JAVA_OPTIONS: "-Xms1024m -Xmx2048m"
 dependencies:
   override:
-    - ./mvnw -s .settings.xml -U --fail-never dependency:go-offline || true
+    - ./mvnw -U --fail-never dependency:go-offline || true
 test:
   override:
-    - ./mvnw -s .settings.xml clean install -U -nsu --batch-mode -Dmaven.test.redirectTestOutputToFile=true -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+    - ./mvnw clean install -U -nsu --batch-mode -Dmaven.test.redirectTestOutputToFile=true -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find . -type f -regex ".*/target/.*-reports/.*" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
-    - bash <(curl -s https://codecov.io/bash)
-
-notify:
-  webhooks:
-    # A list of hook hashes, containing the url field
-    # gitter hook
-    - url: https://webhooks.gitter.im/e/ece0ece9a76a5af2aa91
