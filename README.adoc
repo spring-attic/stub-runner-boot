@@ -6,7 +6,7 @@ needs to have the following properties setup
 ```yml
 stubrunner:
   # artifact ids containing stubs to be downloaded
-  ids: com.example.groupid:artifactid:classifier:version:port
+  ids: com.example.groupid:artifactid:version:classifier:port
   # url of where the stubs reside
   repositoryRoot: http://localhost:8081/artifactory/libs-release-local
 ```
