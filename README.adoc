@@ -34,5 +34,5 @@ the stubs from a repo. If you want to use the stubs installed locally just turn
 
 ## Links
 
-- http://cloud.spring.io/spring-cloud-static/Camden.SR4/#_stub_runner_boot_application[Stub Runner Boot documentation]
-- http://cloud.spring.io/spring-cloud-pipelines/spring-cloud-pipelines.html#_tests[Introduction to an opinionated CD pipeline]
+- https://cloud.spring.io/spring-cloud-static/Camden.SR4/#_stub_runner_boot_application[Stub Runner Boot documentation]
+- https://cloud.spring.io/spring-cloud-pipelines/spring-cloud-pipelines.html#_tests[Introduction to an opinionated CD pipeline]
