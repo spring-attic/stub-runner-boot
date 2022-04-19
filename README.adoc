@@ -1,3 +1,5 @@
+# stub-runner-boot is no longer actively maintained by VMware, Inc.
+
 # Stub Runner Boot
 
 This is an example of a fully setup stub runner boot application that
